@@ -187,9 +187,9 @@ with st.expander("View Instructions"):
     """)
 
 # Button to explain how forecasting works
-with st.expander("How Forecasting Works"):
+with st.expander("How This Works"):
     st.markdown("""
-    ### How Forecasting Works:
+    ### How This Works:
 This app leverages Prophet, an open-source time-series forecasting model developed by Meta AI, to predict future values for financial metrics like costs and revenue. Prophet is designed for handling time-series data with strong seasonal patterns and missing or irregular observations, making it ideal for budgeting and forecasting. It works by decomposing the time-series data into three main components: a trend (overall growth or decline), seasonality (recurring patterns like monthly or yearly cycles), and holidays (optional, user-defined events). In this app, Prophet is applied to each metric (e.g., Cloud Costs, Staff Wages) individually, using historical data to model trends and seasonality, then projecting these patterns forward for the user-specified forecast horizon (up to 36 months). To optimize accuracy, we disable yearly and weekly seasonality (since financial data is typically monthly) and adjust the changepoint_prior_scale to make the model more responsive to trend changes.
 
 To enhance these forecasts, Grok 3 Beta (via xAI API) analyzes your metrics and provides market trend adjustments. For each metric, Grok examines the uploaded data and uses its knowledge of industry trends as of April 23, 2025, to suggest a percentage adjustment (e.g., a 10% increase for rising cloud costs due to demand). These adjustments are applied to the forecasted values, ensuring predictions reflect both your historical data and current market dynamics. The final output combines Prophet’s data-driven forecasts with Grok’s market insights, delivering a more informed projection tailored to your industry.    """)
