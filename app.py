@@ -175,10 +175,6 @@ st.markdown("""
 
 This app helps you create financial templates or forecast future expenses/revenue based on your data.
 
-### How to Use This App:
-1. **Choose an Action**: Select "Create a New Financial Template" to generate a template for data entry, or "Upload an Existing Financial Template" to forecast based on your data.
-2. **Create a Template**: Pick your industry, set a date range, customize metrics, and download a template (CSV or Excel) to fill in your data. Enter only numbers in the template (negative values are allowed), without spaces, symbols (e.g., $, %), or commas.
-3. **Forecast Data**: Upload your filled template, select your industry, specify the forecast horizon, and view/download the expanded dataset with forecasts. Note: A 'Total' column will be calculated from your metrics (e.g., sum of costs).
 """)
 
 # Button to reference instructions
@@ -194,8 +190,9 @@ with st.expander("View Instructions"):
 with st.expander("How Forecasting Works"):
     st.markdown("""
     ### How Forecasting Works:
-    The app uses Prophet, a time-series forecasting model, to predict future values for each metric in your data (e.g., costs, revenue) based on historical trends. Grok analyzes your metrics and provides market trend adjustments (e.g., a percentage increase) to refine the forecast, ensuring predictions reflect both your data and industry trends.
-    """)
+This app leverages Prophet, an open-source time-series forecasting model developed by Meta AI, to predict future values for financial metrics like costs and revenue. Prophet is designed for handling time-series data with strong seasonal patterns and missing or irregular observations, making it ideal for budgeting and forecasting. It works by decomposing the time-series data into three main components: a trend (overall growth or decline), seasonality (recurring patterns like monthly or yearly cycles), and holidays (optional, user-defined events). In this app, Prophet is applied to each metric (e.g., Cloud Costs, Staff Wages) individually, using historical data to model trends and seasonality, then projecting these patterns forward for the user-specified forecast horizon (up to 36 months). To optimize accuracy, we disable yearly and weekly seasonality (since financial data is typically monthly) and adjust the changepoint_prior_scale to make the model more responsive to trend changes.
+
+To enhance these forecasts, Grok 3 Beta (via xAI API) analyzes your metrics and provides market trend adjustments. For each metric, Grok examines the uploaded data and uses its knowledge of industry trends as of April 23, 2025, to suggest a percentage adjustment (e.g., a 10% increase for rising cloud costs due to demand). These adjustments are applied to the forecasted values, ensuring predictions reflect both your historical data and current market dynamics. The final output combines Prophet’s data-driven forecasts with Grok’s market insights, delivering a more informed projection tailored to your industry.    """)
 
 # Initial prompt for user action
 st.subheader("Get Started")
