@@ -1,0 +1,7 @@
+[theme]
+base = "dark"
+primaryColor = "#2ca02c"  # Green, matching your forecast line color
+backgroundColor = "#1e1e1e"  # Dark gray background
+secondaryBackgroundColor = "#2e2e2e"  # Slightly lighter gray for secondary elements
+textColor = "#d4d4d4"  # Light gray text for readability
+font = "sans serif"
